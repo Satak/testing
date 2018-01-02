@@ -1,9 +1,7 @@
-"""Test file."""
+"""Test Python script."""
 
-def new_test(something):
-    return "Here is {}".format(something)
 
-def greet(word, name):
+def greet_me(word, name):
     """Hello world function."""
 
     return "{word} {name}!".format(name=name, word=word)
@@ -11,7 +9,7 @@ def greet(word, name):
 def main():
     """Da main man."""
 
-    greeting = greet(word='Yello', name='Milkyway')
+    greeting = greet_me(word='Yello', name='Milkyway')
     print(greeting)
 
 if __name__ == '__main__':
