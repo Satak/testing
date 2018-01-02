@@ -4,12 +4,17 @@
 def greet_me(word: str, name: str) -> str:
     """Hello world function."""
 
-    return "{word} {name}!".format(name=name, word=word)
+    return "{word} {name}!".format(
+        name=name.capitalize(),
+        word=word.capitalize()
+    )
 
 def main():
     """Da main man."""
 
-    greeting = greet_me(word='Yello', name='Milkyway')
+    name = input('Give yar namee: ')
+    word = input('Give greeting: ')
+    greeting = greet_me(word=word, name=name)
     print(greeting)
 
 if __name__ == '__main__':
