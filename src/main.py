@@ -1,7 +1,7 @@
 """Test Python script."""
 
 
-def greet_me(word, name):
+def greet_me(word: str, name: str) -> str:
     """Hello world function."""
 
     return "{word} {name}!".format(name=name, word=word)
