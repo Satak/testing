@@ -17,7 +17,7 @@ steps:
           image,
           deploy,
           satak-deployment,
-          satak-container=gcr.io/$PROJECT_ID/satak-image:latest
+          'satak-container=gcr.io/$PROJECT_ID/satak-image:latest'
         ]
 - env: [
         'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}',
