@@ -1,5 +1,5 @@
 FROM alpine
-ENV TAG $TAG
+ENV TAG $TAG_NAME
 RUN apk add --no-cache build-base && apk add --no-cache python3 python3-dev postgresql-dev && pip3 install --upgrade pip && pip3 install virtualenv && apk add --no-cache curl
 
 COPY ["requirements.txt", "src/", "/srv/"]
