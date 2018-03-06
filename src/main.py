@@ -1,21 +1,16 @@
-"""Test Python script."""
+"""Test application"""
+
+from flask import Flask, jsonify
+app = Flask(__name__)
 
 
-def greet_me(word: str, name: str) -> str:
-    """Hello world function."""
+@app.route("/")
+def root():
+    message = {
+        "message": "This is a test flask application"
+    }
 
-    return "{word} {name}!".format(
-        name=name.capitalize(),
-        word=word.capitalize()
-    )
-
-def main():
-    """Da main man."""
-
-    name = input('Give yar namee: ')
-    word = input('Give greeting: ')
-    greeting = greet_me(word=word, name=name)
-    print(greeting)
+    return jsonify(message)
 
 if __name__ == '__main__':
-    main()
+    app.run(debug=True, threaded=True)
