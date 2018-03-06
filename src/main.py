@@ -1,8 +1,10 @@
 """Test application"""
 
+from os import environ
 from flask import Flask, jsonify
 app = Flask(__name__)
 
+TAG = environ.get('TAG')
 
 @app.route("/")
 def root():
@@ -11,6 +13,7 @@ def root():
     message = {
         "title": "This is a test flask application.",
         "version": "1.9",
+        "tag": TAG,
         "changes": [
             "1.9: tag name added to cloudbuild.yaml",
             "1.8: time changed",
