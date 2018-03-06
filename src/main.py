@@ -6,8 +6,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
+    """Main."""
+
     message = {
-        "message": "This is a test flask application"
+        "title": "This is a test flask application",
+        "version": "1.1",
+        "changes": [
+            "1.1: message changed",
+            "1.0: init commit"
+        ]
     }
 
     return jsonify(message)
