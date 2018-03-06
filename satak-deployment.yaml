@@ -15,7 +15,7 @@ spec:
         deployment: latest
     spec:
       containers:
-      - name: tag-service
+      - name: satak-service
         image: gcr.io/titanium-octane-192912/satak-image:latest
         ports:
           - name: web
