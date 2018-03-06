@@ -15,8 +15,7 @@ steps:
   args: [
           'set',
           'image',
-          'deployment',
-          'satak-service',
+          'deployment/satak-service',
           'satak-service=gcr.io/$PROJECT_ID/satak-image:latest'
         ]
   env: [
