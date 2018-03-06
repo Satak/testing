@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: satak-service
-        image: gcr.io/titanium-octane-192912/satak-image:latest
+        image: gcr.io/$PROJECT_ID/satak-image:latest
         ports:
           - name: web
             containerPort: 8080
