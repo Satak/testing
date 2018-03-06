@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [
             'build',
-            '-t', 'gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
+            '-t', 'gcr.io/$PROJECT_ID/satak-image',
             '.'
         ]
 - name: 'gcr.io/cloud-builders/docker'
