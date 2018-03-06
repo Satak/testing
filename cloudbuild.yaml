@@ -15,8 +15,9 @@ steps:
   args:
   - set
   - image
-  - deployment/satak-deployment
+  - deploy
+  - satak-deployment
   - satak-container=gcr.io/$PROJECT_ID/satak-image:latest
 - env:
-- 'CLOUDSDK_COMPUTE_ZONE=europe-west3-b'
-- 'CLOUDSDK_CONTAINER_CLUSTER=eos-demo'
+- 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+- 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
