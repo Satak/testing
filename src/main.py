@@ -9,7 +9,7 @@ def root():
     """Main."""
 
     message = {
-        "title": "This is a test flask application",
+        "title": "This is a test flask application.",
         "version": "1.4",
         "changes": [
             "1.4: fix",
