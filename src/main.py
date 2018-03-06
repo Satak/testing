@@ -10,8 +10,9 @@ def root():
 
     message = {
         "title": "This is a test flask application.",
-        "version": "1.4",
+        "version": "1.5",
         "changes": [
+            "1.5: after init deployment",
             "1.4: fix",
             "1.3: deploy",
             "1.2: cached builder for faster build time",
