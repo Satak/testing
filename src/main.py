@@ -7,10 +7,11 @@ app = Flask(__name__)
 def message_ctrl():
     return {
         "title": "This is a test flask application.",
-        "version": "1.9",
+        "version": "1.7",
         "changes": [
-            {"1.9": "tag name added to cloudbuild.yaml"},
-            {"1.8": "time changed"},
+            {"1.7": "html template added"},
+            {"1.6": "tag name added to cloudbuild.yaml"},
+            {"1.5": "time changed"},
             {"1.0": "init commit"}
         ],
         "status": "production",
