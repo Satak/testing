@@ -10,8 +10,9 @@ def root():
 
     message = {
         "title": "This is a test flask application.",
-        "version": "1.7",
+        "version": "1.8",
         "changes": [
+            "1.8: time changed",
             "1.7: status added",
             "1.6: revision id",
             "1.5: after init deployment",
@@ -22,7 +23,7 @@ def root():
             "1.0: init commit"
         ],
         "status": "production",
-        "time": "06.03.2018 17:56"
+        "time": "06.03.2018 18:04"
     }
 
     return jsonify(message)
