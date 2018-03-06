@@ -15,7 +15,7 @@ steps:
   args: [
           'set',
           'image',
-          'deploy',
+          'deployment',
           'satak-deployment',
           'satak-container=gcr.io/$PROJECT_ID/satak-image:latest'
         ]
