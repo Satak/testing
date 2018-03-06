@@ -5,9 +5,10 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 3000
+  - port: 80
     name: http
     targetPort: 8080
     protocol: TCP
   selector:
     app: satak-service
+  type: LoadBalancer

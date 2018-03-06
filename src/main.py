@@ -22,7 +22,7 @@ def root():
             "1.0: init commit"
         ],
         "status": "production",
-        "time": "06.03.2018 16:36"
+        "time": "06.03.2018 17:56"
     }
 
     return jsonify(message)
