@@ -1,5 +1,13 @@
-    steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/satak-image', '.' ]
-    images:
-    - 'gcr.io/$PROJECT_ID/satak-image'
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['pull', 'gcr.io/$PROJECT_ID/satak-image']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+            'build',
+            '--cache-from',
+            'gcr.io/$PROJECT_ID/satak-image',
+            '-t', 'gcr.io/$PROJECT_ID/satak-image',
+            '.'
+        ]
+images:
+- 'gcr.io/$PROJECT_ID/satak-image'
