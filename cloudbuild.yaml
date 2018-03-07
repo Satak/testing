@@ -15,7 +15,7 @@ steps:
           'deployment/satak-service',
           'satak-service=gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
           '-n',
-          'staging'
+          '${_NAMESPACE}'
         ]
   env: [
         'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}',
