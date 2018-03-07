@@ -7,8 +7,9 @@ app = Flask(__name__)
 def message_ctrl():
     return {
         "title": "This is a test flask application.",
-        "version": "1.9",
+        "version": "1.96",
         "changes": [
+            {"1.96": "minor tweaks"},
             {"1.9": "multi namespace"},
             {"1.8": "morning change"},
             {"1.7": "html template added"},
@@ -17,7 +18,7 @@ def message_ctrl():
             {"1.0": "init commit"}
         ],
         "status": "staging",
-        "time": "07.03.2018 12:54"
+        "time": "07.03.2018 14:28"
     }
 
 @app.route("/")
