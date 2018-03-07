@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [
             'build',
-            '-t', 'gcr.io/$PROJECT_ID/satak-image',
+            '-t', 'gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
             '.'
         ]
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -10,7 +10,7 @@ steps:
           'set',
           'image',
           'deployment/satak-service',
-          'satak-service=gcr.io/$PROJECT_ID/satak-image',
+          'satak-service=gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
           '-n',
           '${_NAMESPACE}'
         ]
@@ -19,7 +19,7 @@ steps:
         'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
        ]
 images:
-- 'gcr.io/$PROJECT_ID/satak-image'
+- 'gcr.io/$PROJECT_ID/satak-image:$TAG_NAME'
 tags:
-- "test"
-- "tag2"
+- "$TAG_NAME"
+- "$REVISION_ID"
