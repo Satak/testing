@@ -18,6 +18,8 @@ steps:
         'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}',
         'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
        ]
+substitutions:
+  TAG_NAME: staging # default value
 images:
 - 'gcr.io/$PROJECT_ID/satak-image:$TAG_NAME'
 tags:
