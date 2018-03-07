@@ -20,7 +20,6 @@ steps:
        ]
 images:
 - 'gcr.io/$PROJECT_ID/satak-image'
-tags: [
-        "$TAG_NAME",
-        "$REVISION_ID"
-      ]
+tags:
+- "test"
+- "tag2"

@@ -16,7 +16,7 @@ def message_ctrl():
             {"1.0": "init commit"}
         ],
         "status": "staging",
-        "time": "07.03.2018 12:14"
+        "time": "07.03.2018 12:19"
     }
 
 @app.route("/")
