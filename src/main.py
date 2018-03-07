@@ -9,7 +9,7 @@ def message_ctrl():
         "title": "This is a test flask application.",
         "version": "1.8",
         "changes": [
-            {"1.8": "mornign change"},
+            {"1.8": "morning change"},
             {"1.7": "html template added"},
             {"1.6": "tag name added to cloudbuild.yaml"},
             {"1.5": "time changed"},
