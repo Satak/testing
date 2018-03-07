@@ -1,19 +1,16 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  env: ['TAG=$TAG_NAME']
   args: [
             'build',
-            '-t', 'gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
+            '-t', 'gcr.io/$PROJECT_ID/satak-image',
             '.'
         ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "gcr.io/$PROJECT_ID/satak-image:$TAG_NAME"]
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
           'set',
           'image',
           'deployment/satak-service',
-          'satak-service=gcr.io/$PROJECT_ID/satak-image:$TAG_NAME',
+          'satak-service=gcr.io/$PROJECT_ID/satak-image',
           '-n',
           '${_NAMESPACE}'
         ]
@@ -21,3 +18,9 @@ steps:
         'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}',
         'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
        ]
+images:
+- 'gcr.io/$PROJECT_ID/satak-image'
+tags: [
+        "$TAG_NAME",
+        "$REVISION_ID"
+      ]
