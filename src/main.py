@@ -15,8 +15,8 @@ def message_ctrl():
             {"1.5": "time changed"},
             {"1.0": "init commit"}
         ],
-        "status": "production",
-        "time": "07.03.2018 09:00"
+        "status": "staging",
+        "time": "07.03.2018 12:19"
     }
 
 @app.route("/")
