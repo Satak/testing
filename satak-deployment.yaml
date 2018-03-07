@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: satak-service
-  namespace: default
 spec:
   replicas: 1
   selector:
