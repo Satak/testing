@@ -6,8 +6,8 @@ from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-IN_PROD = True
+app.config['DEBUG'] = True
+IN_PROD = False
 
 DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
 
@@ -16,6 +16,8 @@ if IN_PROD:
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DP_PATH
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 class VersionHistory(db.Model):
@@ -39,6 +41,7 @@ class VersionHistory(db.Model):
 def changes_ctrl():
     return [item.as_dict() for item in VersionHistory.query.all()]
 
+
 def message_ctrl():
     changes = changes_ctrl()
     return {
@@ -50,6 +53,11 @@ def message_ctrl():
 def init():
     db.create_all()
     return jsonify({"message": "DB Created"})
+
+@app.route("/delete")
+def delete_all():
+    db.drop_all()
+    return jsonify({"message": "DB Deleted!"})
 
 @app.route("/")
 def root():
