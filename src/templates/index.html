@@ -19,13 +19,21 @@
         <span class="badge badge-primary">{{data.time}}</span>
         <table class="table">
             <thead>
-                <tr><th>Version</th><th>Change</th></tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Version</th>
+                    <th>Change</th>
+                </tr>
             </thead>
             <tbody>
-                {% for changes in data.changes %}
-                {% for verson, change in changes.items() %}
-                <tr><td>{{verson}}</td><td>{{change}}</td></tr>
-                {% endfor %}
+                {% for change in data.changes %}
+                <tr>
+                    <td>{{change.id}}</td>
+                    <td>{{change.date_time}}</td>
+                    <td>{{change.version}}</td>
+                    <td>{{change.change}}</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
