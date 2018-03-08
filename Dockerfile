@@ -7,6 +7,6 @@ RUN virtualenv /srv/env && /srv/env/bin/pip install -r /srv/requirements.txt
 
 WORKDIR /srv
 EXPOSE 8080
-USER nobody
+USER root
 
 CMD ["/srv/env/bin/gunicorn", "-b", "0.0.0.0:8080", "-w", "10", "main:app"]
