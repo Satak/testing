@@ -9,7 +9,8 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 
 #DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
-DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+#DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+DP_PATH = 'sqlite:////tmp/test.db'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DP_PATH
