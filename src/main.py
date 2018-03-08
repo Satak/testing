@@ -78,5 +78,10 @@ def api_changes():
 
     return jsonify(changes_ctrl())
 
+@app.errorhandler(500)
+def internal_error(error):
+
+    return str(error)
+
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
