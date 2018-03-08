@@ -56,6 +56,11 @@ def delete_all():
     db.drop_all()
     return jsonify({"message": "DB Deleted!"})
 
+@app.route("/test")
+def test_route():
+    """testing."""
+    return "This works!"
+
 @app.route("/")
 def root():
     """UI."""
@@ -84,4 +89,4 @@ def internal_error(error):
     return str(error)
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    app.run(threaded=True)
