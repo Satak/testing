@@ -19,3 +19,10 @@ spec:
         ports:
           - name: web
             containerPort: 8080
+        volumeMounts:
+          - name: data-storage
+            mountPath: /var/lib/sql/data
+      volumes:
+        - name: data-storage
+          persistentVolumeClaim:
+            claimName: satak-volume
