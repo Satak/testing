@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: satak-service
-        image: gcr.io/$PROJECT_ID/satak-image:latest
+        image: gcr.io/titanium-octane-192912/satak-image:staging-bc56e6731efff2b1fe3b7b9b471786ef6df51b22
         ports:
           - name: web
             containerPort: 8080
@@ -25,4 +25,4 @@ spec:
       volumes:
         - name: data-storage
           persistentVolumeClaim:
-            claimName: satak-volume
+            claimName: restored-claim
