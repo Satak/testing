@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-IN_PROD = False
+IN_PROD = True
 
 DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
 
