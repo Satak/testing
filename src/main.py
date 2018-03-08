@@ -7,12 +7,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-IN_PROD = False
 
-DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
-
-if IN_PROD:
-    DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+#DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
+DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DP_PATH
