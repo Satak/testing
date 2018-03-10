@@ -6,11 +6,11 @@ from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
 
 #DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
-DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+#DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
 #DP_PATH = 'sqlite:////tmp/test.db'
+DP_PATH = 'sqlite:////test.db'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DP_PATH
@@ -90,4 +90,4 @@ def internal_error(error):
     return str(error)
 
 if __name__ == '__main__':
-    app.run(threaded=True)
+    app.run(debug=True, threaded=True)
