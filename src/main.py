@@ -1,25 +1,65 @@
 """Test application"""
 
-from flask import Flask, jsonify, render_template
+from datetime import datetime
+from os import environ
+
+from flask import Flask, jsonify, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+# set local env Set-Item -path env:DB_PATH -value 'sqlite:////Dev/satak/testing/db/test.db'
+
+#DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_PATH')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class VersionHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.String(80), nullable=False)
+    change = db.Column(db.String(80), nullable=False)
+    date_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __init__(self, version, change):
+        self.version = version
+        self.change = change
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "version": self.version,
+            "change": self.change,
+            "date_time": self.date_time
+        }
+
+def changes_ctrl():
+    return [item.as_dict() for item in VersionHistory.query.all()]
+
+
 def message_ctrl():
+    changes = changes_ctrl()
     return {
-        "title": "This is a test flask application.",
-        "version": "1.96",
-        "changes": [
-            {"1.96": "minor tweaks"},
-            {"1.9": "multi namespace"},
-            {"1.8": "morning change"},
-            {"1.7": "html template added"},
-            {"1.6": "tag name added to cloudbuild.yaml"},
-            {"1.5": "time changed"},
-            {"1.0": "init commit"}
-        ],
-        "status": "staging",
-        "time": "07.03.2018 14:28"
+        "changes": changes,
+        "time": "07.03.2018 09:22"
     }
+
+@app.route("/init")
+def init():
+    db.create_all()
+    return jsonify({"message": "DB Created"})
+
+@app.route("/delete")
+def delete_all():
+    db.drop_all()
+    return jsonify({"message": "DB Deleted!"})
+
+@app.route("/test")
+def test_route():
+    """testing."""
+    return "This works!"
 
 @app.route("/")
 def root():
@@ -27,11 +67,26 @@ def root():
 
     return render_template('index.html', data=message_ctrl())
 
-@app.route("/api/version")
-def api_version():
-    """Api version."""
 
-    return jsonify(message_ctrl())
+@app.route("/api/changes", methods=['POST'])
+def api_new_change():
+    """Post new change."""
+
+    change = VersionHistory(**request.get_json(silent=True))
+    db.session.add(change)
+    db.session.commit()
+    return jsonify(change.as_dict()), 201
+
+@app.route("/api/changes")
+def api_changes():
+    """Get vesion history."""
+
+    return jsonify(changes_ctrl())
+
+@app.errorhandler(500)
+def internal_error(error):
+
+    return str(error)
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
