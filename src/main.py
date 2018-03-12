@@ -1,19 +1,18 @@
 """Test application"""
 
 from datetime import datetime
+from os import environ
 
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-#DP_PATH = 'sqlite:////Dev/satak/testing/db/test.db'
+# set local env Set-Item -path env:DB_PATH -value 'sqlite:////Dev/satak/testing/db/test.db'
+
 #DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
-#DP_PATH = 'sqlite:////tmp/test.db'
-DP_PATH = 'sqlite:////test.db'
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = DP_PATH
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_PATH')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
