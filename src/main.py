@@ -9,8 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # set local env Set-Item -path env:DB_PATH -value 'sqlite:////Dev/satak/testing/db/test.db'
-
-#DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
+# DP_PATH = 'sqlite:////var/lib/sql/data/test.db'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_PATH')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
