@@ -5,15 +5,6 @@ steps:
             '-t', 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:staging-$REVISION_ID',
             '.'
         ]
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: [
-          'set',
-          'image',
-          'deployment/${_DEPLOYMENT_NAME}',
-          '${_DEPLOYMENT_NAME}=gcr.io/$PROJECT_ID/${_IMAGE_NAME}:staging-$REVISION_ID',
-          '-n',
-          '${_NAMESPACE}'
-        ]
   env: [
         'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}',
         'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'

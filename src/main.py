@@ -65,6 +65,7 @@ def secrets_route():
     """testing secrets."""
 
     data = {
+        'new': 'hello',
         'username': environ.get('DB_USERNAME'),
         'password': environ.get('DB_PASSWORD')
     }
