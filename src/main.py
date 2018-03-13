@@ -60,6 +60,17 @@ def test_route():
     """testing."""
     return "This works!"
 
+@app.route("/secrets")
+def secrets_route():
+    """testing secrets."""
+
+    data = {
+        'username': environ.get('DB_USERNAME'),
+        'password': environ.get('DB_PASSWORD')
+    }
+
+    return jsonify(data)
+
 @app.route("/")
 def root():
     """UI."""
