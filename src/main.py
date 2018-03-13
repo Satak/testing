@@ -65,8 +65,9 @@ def secrets_route():
     """testing secrets."""
 
     data = {
-        'username': environ.get('DB_USERNAME'),
-        'password': environ.get('DB_PASSWORD')
+        #'username': environ.get('DB_USERNAME'),
+        #'password': environ.get('DB_PASSWORD'),
+        'environ': environ
     }
 
     return jsonify(data)
